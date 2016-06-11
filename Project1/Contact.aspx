@@ -1,12 +1,13 @@
 ﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="Project1.Contact" %>
+
+<%--
+ * @authors: Mayank Raval and  Akhil Thakkar
+ * @date: June 8, 2016
+ * @version : 0.0.1 
+   @Description : "Contact Us" page content is here inluding small "contact information" panel.
+--%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <!--
-         * @authors: Mayank Raval and  Akhil Thakkar
-         * @date: June 8, 2016
-         * @version 0.0.1 "Contact Us" page content is here inluding small 
-           "contact information" panel. 
-    --> 
-    <div class="container">       
+    <div class="container">
         <div class="row">
             <div class="col-md-offset-4 col-md-8">
                 <h1>Contact Us</h1>
@@ -57,8 +58,8 @@
                     <asp:Button ForeColor="black" Font-Bold="true" CssClass="btn btn-danger bt-lg" Text="Cancel" runat="server" ID="CancelButton" />
                 </div>
             </div>
-      
+
         </div>
-        
+
     </div>
 </asp:Content>

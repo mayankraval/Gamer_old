@@ -1,4 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Navbar.ascx.cs" Inherits="Project1.User_Controls.Navbar" %>
+<%--
+ * @authors: Mayank Raval and  Akhil Thakkar
+ * @date: June 8, 2016
+ * @version : 0.0.1 
+ * @Description : provides common navigation control for every web page in site.
+--%>
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->

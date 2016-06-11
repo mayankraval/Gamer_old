@@ -1,4 +1,10 @@
 ﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Project1.Login" %>
+<%--
+ * @authors: Mayank Raval and  Akhil Thakkar
+ * @date: June 8, 2016
+ * @version : 0.0.1 
+ * @Description : Login page allows registered user to edit the game tracker and if a new user, then it will redirect to register page
+ --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">       
         <div class="row">

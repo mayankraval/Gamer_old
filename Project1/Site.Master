@@ -1,4 +1,10 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Project1.Site" %>
+<%--
+ * @authors: Mayank Raval and  Akhil Thakkar
+ * @date: June 8, 2016
+ * @version : 0.0.1 
+   @Description : This page provides master page structure to other pages in web site
+ --%>
 <%@ Register Src="~/User_Controls/Navbar.ascx" TagName="Navbar" TagPrefix="bs3" %>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,4 +1,11 @@
 ﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Project1.Register" %>
+<%--
+ * @authors: Mayank Raval and  Akhil Thakkar
+ * @date: June 8, 2016
+ * @version : 0.0.1 
+ * @Web Site : http://amgamer.azurewebsites.net/
+ * @Description : All the content for registering new user is down below with the submit button and cancel.
+--%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">       
         <div class="row">
@@ -6,7 +13,7 @@
                 <h1>Register Page</h1>
             </div>
         </div>
-        <!-- Al the content for registering new user is down below with the submimt button and cancel -->
+
         <div class="row">
             <div class="col-md-2">
                  </div>

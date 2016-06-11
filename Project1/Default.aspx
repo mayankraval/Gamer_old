@@ -1,5 +1,11 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Project1.Default" %>
 
+<%-- 
+    File : Default.aspx
+    Author : Mayank Raval(200300508) Akhil Thakkar(200300312)
+    Web Site : http://amgamer.azurewebsites.net/
+    Description : Shows the Score card with the List of games and scores with top player and high score. 
+                 Also it shoes game stage --%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="row">
