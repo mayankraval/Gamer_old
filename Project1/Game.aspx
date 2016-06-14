@@ -7,6 +7,10 @@
     Description : It will show the game score card but only after thwe user log in and will be able to
                 edit and delete the game scores. --%>
     <h3>
+<<<<<<< HEAD
         
+=======
+        Game Content goes here and is active only after gamer login.
+>>>>>>> d59544b8ab1be33cfc7d1785f36d0a1058ed699f
     </h3>
 </asp:Content>
