@@ -12,39 +12,39 @@ using System.Linq.Dynamic;
 
 namespace Project1
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class EditGame : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if loading the page for the first time, populate the Game grid
+            // if loading the page for the first time, populate the Game grid
             if (!IsPostBack)
             {
                 Session["SortColumn"] = "GameID";
                 Session["SortDirection"] = "ASC";
-                //Get the Game data
+                // Get the student data
                 this.GetGame();
             }
+
         }
         protected void GetGame()
         {
-            //string sortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
+            string sortString = Session["SortColumn"].ToString() + " " + Session["SortDirection"].ToString();
 
             // connect to EF
             using (GameDefaultConnection db = new GameDefaultConnection())
             {
                 // query the Students Table using EF and LINQ
                 var g1 = (from allGames in db.Games
-                           select allGames);
+                            select allGames);
 
                 // bind the result to the GridView
-                //GameGridView.DataSource = g1.AsQueryable().OrderBy(sortString).ToList();
-                GameGridView.DataSource = g1.AsQueryable().ToList();
+                GameGridView.DataSource = g1.AsQueryable().OrderBy(sortString).ToList();
                 GameGridView.DataBind();
             }
         }
+
         protected void PageSizeDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             // set new page size
             GameGridView.PageSize = Convert.ToInt32(PageSizeDropDownList.SelectedValue);
 
@@ -52,29 +52,26 @@ namespace Project1
             this.GetGame();
         }
 
+        protected void GameGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+
+        }
+
         protected void GameGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+
             // Set the new page number
             GameGridView.PageIndex = e.NewPageIndex;
 
             // refresh the grid
             this.GetGame();
-        }
 
-        protected void GameGridView_Sorting(object sender, GridViewSortEventArgs e)
-        {
-            // get the column to sort by
-            Session["SortColumn"] = e.SortExpression;
-
-            // refresh the grid
-            this.GetGame();
-
-            // toggle the direction
-            Session["SortDirection"] = Session["SortDirection"].ToString() == "ASC" ? "DESC" : "ASC";
         }
 
         protected void GameGridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+
             if (IsPostBack)
             {
                 if (e.Row.RowType == DataControlRowType.Header) // check to see if the click is on the header row
@@ -99,6 +96,22 @@ namespace Project1
                     }
                 }
             }
+        }
+
+
+
+
+        protected void GameGridView_Sorting(object sender, GridViewSortEventArgs e)
+        {
+
+            // get the column to sort by
+            Session["SortColumn"] = e.SortExpression;
+
+            // refresh the grid
+            this.GetGame();
+
+            // toggle the direction
+            Session["SortDirection"] = Session["SortDirection"].ToString() == "ASC" ? "DESC" : "ASC";
         }
     }
 }

@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="gameModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Game">
+        <EntityType Name="Games">
           <Key>
             <PropertyRef Name="GameID" />
           </Key>
@@ -15,12 +15,13 @@
           <Property Name="TotalScore" Type="int" Nullable="false" />
           <Property Name="Spectators" Type="bigint" Nullable="false" />
           <Property Name="WinningTeam" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastUpdated" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="GameScore">
+        <EntityType Name="GameScores">
           <Key>
             <PropertyRef Name="ScoreID" />
           </Key>
-          <Property Name="ScoreID" Type="int" Nullable="false" />
+          <Property Name="ScoreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GameID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TeamID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TotalScore" Type="int" Nullable="false" />
@@ -30,7 +31,7 @@
           <Key>
             <PropertyRef Name="TeamID" />
           </Key>
-          <Property Name="TeamID" Type="int" Nullable="false" />
+          <Property Name="TeamID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="GameID" Type="int" Nullable="false" />
@@ -49,8 +50,8 @@
           <Property Name="TeamID" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="gameModelStoreContainer">
-          <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GameScore" EntityType="Self.GameScore" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GameScores" EntityType="Self.GameScores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -59,37 +60,26 @@
     <edmx:ConceptualModels>
       <Schema Namespace="gameModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="GameDefaultConnection" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Game1" EntityType="gameModel.Game1" />
-          <EntitySet Name="GameScore1" EntityType="gameModel.GameScore1" />
-          <EntitySet Name="Team1" EntityType="gameModel.Team1" />
+          <EntitySet Name="GameScores" EntityType="gameModel.GameScore" />
+          <EntitySet Name="Teams" EntityType="gameModel.Team" />
           <EntitySet Name="Users" EntityType="gameModel.User" />
+          <EntitySet Name="Games" EntityType="gameModel.Game" />
         </EntityContainer>
-        <EntityType Name="Game1">
-          <Key>
-            <PropertyRef Name="GameID" />
-          </Key>
-          <Property Name="GameID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GameName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TotalScore" Type="Int32" Nullable="false" />
-          <Property Name="Spectators" Type="Int64" Nullable="false" />
-          <Property Name="WinningTeam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="GameScore1">
+        <EntityType Name="GameScore">
           <Key>
             <PropertyRef Name="ScoreID" />
           </Key>
-          <Property Name="ScoreID" Type="Int32" Nullable="false" />
+          <Property Name="ScoreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="GameID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TeamID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TotalScore" Type="Int32" Nullable="false" />
           <Property Name="MaxScore" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Team1">
+        <EntityType Name="Team">
           <Key>
             <PropertyRef Name="TeamID" />
           </Key>
-          <Property Name="TeamID" Type="Int32" Nullable="false" />
+          <Property Name="TeamID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="GameID" Type="Int32" Nullable="false" />
@@ -107,27 +97,27 @@
           <Property Name="Salt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TeamID" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="GameID" />
+          </Key>
+          <Property Name="GameID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TotalScore" Type="Int32" Nullable="false" />
+          <Property Name="Spectators" Type="Int64" Nullable="false" />
+          <Property Name="WinningTeam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="gameModelStoreContainer" CdmEntityContainer="GameDefaultConnection">
-          <EntitySetMapping Name="Game1">
-            <EntityTypeMapping TypeName="gameModel.Game1">
-              <MappingFragment StoreEntitySet="Game">
-                <ScalarProperty Name="WinningTeam" ColumnName="WinningTeam" />
-                <ScalarProperty Name="Spectators" ColumnName="Spectators" />
-                <ScalarProperty Name="TotalScore" ColumnName="TotalScore" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="GameName" ColumnName="GameName" />
-                <ScalarProperty Name="GameID" ColumnName="GameID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GameScore1">
-            <EntityTypeMapping TypeName="gameModel.GameScore1">
-              <MappingFragment StoreEntitySet="GameScore">
+          <EntitySetMapping Name="GameScores">
+            <EntityTypeMapping TypeName="gameModel.GameScore">
+              <MappingFragment StoreEntitySet="GameScores">
                 <ScalarProperty Name="MaxScore" ColumnName="MaxScore" />
                 <ScalarProperty Name="TotalScore" ColumnName="TotalScore" />
                 <ScalarProperty Name="TeamID" ColumnName="TeamID" />
@@ -136,8 +126,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Team1">
-            <EntityTypeMapping TypeName="gameModel.Team1">
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="gameModel.Team">
               <MappingFragment StoreEntitySet="Team">
                 <ScalarProperty Name="GameID" ColumnName="GameID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -160,7 +150,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-  </EntityContainerMapping>
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="gameModel.Game">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="WinningTeam" ColumnName="WinningTeam" />
+                <ScalarProperty Name="Spectators" ColumnName="Spectators" />
+                <ScalarProperty Name="TotalScore" ColumnName="TotalScore" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GameName" ColumnName="GameName" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->

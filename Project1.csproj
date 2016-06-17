@@ -87,7 +87,8 @@
     <Content Include="Assests\images\LOGO.png" />
     <Content Include="Contact.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="Game.aspx" />
+    <Content Include="EditGame.aspx" />
+    <Content Include="GameDetails.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Models\GameModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -109,6 +110,7 @@
     </EntityDeploy>
     <Content Include="Models\GameModel.edmx.diagram">
       <DependentUpon>GameModel.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -166,12 +168,19 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Game.aspx.cs">
-      <DependentUpon>Game.aspx</DependentUpon>
+    <Compile Include="EditGame.aspx.cs">
+      <DependentUpon>EditGame.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Game.aspx.designer.cs">
-      <DependentUpon>Game.aspx</DependentUpon>
+    <Compile Include="EditGame.aspx.designer.cs">
+      <DependentUpon>EditGame.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GameDetails.aspx.cs">
+      <DependentUpon>GameDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GameDetails.aspx.designer.cs">
+      <DependentUpon>GameDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -180,7 +189,7 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Game1.cs">
+    <Compile Include="Models\Game.cs">
       <DependentUpon>GameModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GameModel.Context.cs">
@@ -198,10 +207,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GameModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\GameScore1.cs">
+    <Compile Include="Models\GameScore.cs">
       <DependentUpon>GameModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Team1.cs">
+    <Compile Include="Models\Team.cs">
       <DependentUpon>GameModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">

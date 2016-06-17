@@ -12,12 +12,14 @@ namespace Project1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class GameScore1
+    public partial class Game
     {
-        public int ScoreID { get; set; }
-        public string GameID { get; set; }
-        public string TeamID { get; set; }
+        public int GameID { get; set; }
+        public string GameName { get; set; }
+        public string Description { get; set; }
         public int TotalScore { get; set; }
-        public int MaxScore { get; set; }
+        public long Spectators { get; set; }
+        public string WinningTeam { get; set; }
+        public System.DateTime LastUpdated { get; set; }
     }
 }

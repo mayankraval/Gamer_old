@@ -25,9 +25,9 @@ namespace Project1.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Game1> Games { get; set; }
-        public virtual DbSet<GameScore1> GameScores { get; set; }
-        public virtual DbSet<Team1> Teams { get; set; }
+        public virtual DbSet<GameScore> GameScores { get; set; }
+        public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Game> Games { get; set; }
     }
 }

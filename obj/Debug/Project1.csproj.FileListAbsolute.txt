@@ -37,3 +37,4 @@ C:\Users\Akhil\Desktop\lab3final\Gamer-master\Gamer-master\Project1\bin\EntityFr
 C:\Users\Akhil\Desktop\lab3final\Gamer-master\Gamer-master\Project1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Akhil\Desktop\lab3final\Gamer-master\Gamer-master\Project1\obj\Debug\Project1.dll
 C:\Users\Akhil\Desktop\lab3final\Gamer-master\Gamer-master\Project1\obj\Debug\Project1.pdb
+C:\Users\Akhil\Desktop\lab3final\Gamer-master\Gamer-master\Project1\obj\Debug\Project1.csprojResolveAssemblyReference.cache

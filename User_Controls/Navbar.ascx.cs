@@ -42,6 +42,9 @@ namespace Project1.User_Controls
                 case "Game":
                     game.Attributes.Add("class", "active");
                     break;
+                case "Game Details":
+                    editgame.Attributes.Add("class", "active");
+                    break;
                 case "Contact":
                     contact.Attributes.Add("class", "active");
                     break;
